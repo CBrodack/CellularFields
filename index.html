@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="./mypizz.js"></script>
+<title>We Grow Together</title>
+<script src="NoSleep.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    background-color: black;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    font-size: 26px;
+}
+
+.block {
+    display: block;
+    width: 100%;
+    border: none;
+    color: white;
+    padding: 14px 28px;
+    font-size: 46px;
+    cursor: pointer;
+    text-align: center;
+    outline: none;
+    max-width: 600px;
+}
+
+a {
+    color: #555555;
+}
+
+.center {
+    text-align: center;
+    list-style-position: inside;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    color: #888888;
+}
+
+.content {
+    margin: auto;
+    max-width: 600px;
+    padding: 10px;
+    background-color: #111111;
+    border-color: #888888;
+    border-width: medium;
+    border-style: solid;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+</style>
+
+<body style="font-family: 'Lato', sans-serif;">
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <div class="row">
+            <div class="content">
+                <center>
+                    <button ng-click="onClickMe()" class="block" style="background-color: {{bgcolor}}">{{buttonMessage}}</button>
+                </center>
+                <div class="column">
+                    <ol>
+                        <li>grow</li>
+                        <li>sway</li>
+                        <li>cross</li>
+                        <li>unfold</li>
+                    </ol>
+                </div>
+                <center>
+                    <div class="column">
+                        orientation values:
+                        <br>
+                        {{alphaDisplay}} and {{betaDisplay}} and {{gammaDisplay}}
+                    </div>
+                    <br>
+                    <button ng-click="stopMusic()" class="block" style="background-color:#7D8491;">STOP</button>
+                    <div class="row">
+                        <div class="column">
+                        </div>
+                        <div class="column">
+                            by <a href="http://www.brianellissound.com" target="_blank">Brian Ellis Sound</a>
+                        </div>
+                    </div>
+                    <br>
+                </center>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="home.js"></script>
+
+</html>
