@@ -98,7 +98,7 @@ app.controller('myCtrl', function($scope) {
       $scope.beta = scale(beta).toFixed(2);
       $scope.gamma = scale(gamma).toFixed(2);
       myAudioDelay.feedback = 0.6;
-      myAudioDelay.time = const rndInt = Math.floor(Math.random() * 1000) + 1;
+      myAudioDelay.time = Math.floor(Math.random() * 1000) + 1;
       myAudioDelay.mix = scale(beta);
       console.log(myAudioDelay.time);
       $scope.alphaDisplay = (scale(alpha) * 100).toFixed(0);
