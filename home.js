@@ -1,8 +1,8 @@
 const COLOR_PRIMARY = "#4C3FAF"
 // const COLOR_SECOND = "#4CAF50"
-const PLAY_MSSG = "PLAY"
-const AGAIN_MSSG = "AGAIN"
-const PRESSED_MSSG = "GOING"
+const PLAY_MSSG = "START"
+const AGAIN_MSSG = "GOING"
+const PRESSED_MSSG = "START"
 const ASK_MSSG = "ASK"
 var myTimeoutKeeper;
 
@@ -62,7 +62,7 @@ var app = angular.module('myApp', []);
 
 var myAudioDelay = new Pizzicato.Effects.Delay();
 var myLowPassFilter = new Pizzicato.Effects.LowPassFilter({
-  frequency: 2000,
+  frequency: 4000,
   peak: 1
 });
 
@@ -97,9 +97,9 @@ app.controller('myCtrl', function($scope) {
       $scope.alpha = scale(alpha).toFixed(2);
       $scope.beta = scale(beta).toFixed(2);
       $scope.gamma = scale(gamma).toFixed(2);
-      myAudioDelay.feedback = (scale(alpha) * 0.8) + .19;
-      myAudioDelay.time = scale(beta);
-      myAudioDelay.mix = scale(gamma) * 0.7;
+      myAudioDelay.feedback = 0.0;
+      myAudioDelay.time = scale(beta) * 2.0;
+      myAudioDelay.mix = 1.0;
       console.log(myAudioDelay.time);
       $scope.alphaDisplay = (scale(alpha) * 90).toFixed(0);
       $scope.betaDisplay = (scale(beta) * 90).toFixed(0);
