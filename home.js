@@ -60,7 +60,7 @@ allFileNames.forEach(element => {
 
 var app = angular.module('myApp', []);
 
-var myAudioDelay = new Pizzicato.Effects.Delay();
+var myAudioDelay = new Pizzicato.Effects.DubDelay();
 var myLowPassFilter = new Pizzicato.Effects.LowPassFilter({
   frequency: 4000,
   peak: 1
@@ -100,6 +100,7 @@ app.controller('myCtrl', function($scope) {
       myAudioDelay.feedback = 0.0;
       myAudioDelay.time = scale(beta) * 0.4;
       myAudioDelay.mix = 1.0;
+	  myAudioDelay.cutoff = 700
       console.log(myAudioDelay.time);
       $scope.alphaDisplay = (scale(alpha) * 90).toFixed(0);
       $scope.betaDisplay = (scale(beta) * 90).toFixed(0);
