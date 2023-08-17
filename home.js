@@ -62,7 +62,7 @@ var app = angular.module('myApp', []);
 
 var myAudioDelay = new Pizzicato.Effects.Delay();
 var myLowPassFilter = new Pizzicato.Effects.LowPassFilter({
-  frequency: 4000,
+  frequency: 2000,
   peak: 1
 });
 
