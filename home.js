@@ -60,7 +60,7 @@ allFileNames.forEach(element => {
 
 var app = angular.module('myApp', []);
 
-var myPingPongDelay = new Pizzicato.Effects.PingPongDelay();
+var myAudioDelay = new Pizzicato.Effects.Delay();
 var myLowPassFilter = new Pizzicato.Effects.LowPassFilter({
   frequency: 4000,
   peak: 1
@@ -78,7 +78,7 @@ app.controller('myCtrl', function($scope) {
   $scope.buttonMessage = ASK_MSSG
   $scope.playing = false
 
-  group.addEffect(myPingPongDelay)
+  group.addEffect(myAudioDelay)
   group.addEffect(myLowPassFilter)
 
   $scope.stopMusic = function() {
@@ -97,10 +97,10 @@ app.controller('myCtrl', function($scope) {
       $scope.alpha = scale(alpha).toFixed(2);
       $scope.beta = scale(beta).toFixed(2);
       $scope.gamma = scale(gamma).toFixed(2);
-      myPingPongDelay.feedback = 0.6;
-      myPingPongDelay.time = scale(beta) * 0.4;
-      myPingPongDelay.mix = 0.5;
-      console.log(myPingPongDelay.time);
+      myAudioDelay.feedback = 0.0;
+      myAudioDelay.time = scale(beta) * 0.4;
+      myAudioDelay.mix = 0.5;
+      console.log(myAudioDelay.time);
       $scope.alphaDisplay = (scale(alpha) * 90).toFixed(0);
       $scope.betaDisplay = (scale(beta) * 90).toFixed(0);
       $scope.gammaDisplay = (scale(gamma) * 90).toFixed(0);
@@ -143,7 +143,7 @@ app.controller('myCtrl', function($scope) {
       $scope.$apply()
     }, 5000)
 
-    // $scope.myPingPongDelay.mix = 0
+    // $scope.myAudioDelay.mix = 0
     // now do the audio bit
     $scope.sound = AllPizzSounds[$scope.selected % allFileNames.length]
     $scope.sound.play()
