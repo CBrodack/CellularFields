@@ -53,7 +53,7 @@ var app = angular.module('myApp', []);
 
 //effects//
 var myFlange = new Pizzicato.Effects.Flanger({
-	time: 0.45,
+	time: 5.0,
 	feedback: 0.1,
 	mix: 0.5
 });
