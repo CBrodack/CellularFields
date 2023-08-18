@@ -50,9 +50,13 @@ allFileNames.forEach(element => {
 
 var app = angular.module('myApp', []);
 
-var myAudioDelay = new Pizzicato.Effects.Delay();
-var myLowPassFilter = new Pizzicato.Effects.LowPassFilter({
-  frequency: 4000,
+//effects//
+var myFlange = new Pizzicato.Effects.Flanger({
+	time: 0.45,
+	feedback: 0.1,
+	mix: 0.5
+});
+var myLPF = new Pizzicato.Effects.LowPassFilter({
   peak: 1
 });
 
@@ -68,15 +72,15 @@ app.controller('myCtrl', function($scope) {
   $scope.buttonMessage = ASK_MSSG
   $scope.playing = false
 
-  group.addEffect(myAudioDelay)
-  //group.addEffect(myLowPassFilter)//
+  group.addEffect(myFlange)
+  group.addEffect(myLPF)
 
   $scope.stopMusic = function() {
     console.log("yeee?")
     window.location.reload();
   }
 
-
+//variables to change with orientation//
   $scope.updateXY = function(event) {
     console.log("update");
     console.log(event.alpha);
@@ -87,10 +91,11 @@ app.controller('myCtrl', function($scope) {
       $scope.alpha = scale(alpha).toFixed(2);
       $scope.beta = scale(beta).toFixed(2);
       $scope.gamma = scale(gamma).toFixed(2);
-      myAudioDelay.feedback = 0.6;
-      myAudioDelay.time = (scale(beta) * 100);
-      myAudioDelay.mix = 0.7;
-      console.log(myAudioDelay.time);
+      myFlange.speed = (scale(alpha) * 1.0);
+      myFlange.depth = (scale(beta) * 1.0);
+      console.log(myFlange.speed);
+	  console.log(myFlange.depth);
+	  console.log(myLPF.frequency);
       $scope.alphaDisplay = (scale(alpha) * 100).toFixed(0);
       $scope.betaDisplay = (scale(beta) * 100).toFixed(0);
       $scope.gammaDisplay = (scale(gamma) * 100).toFixed(0);
@@ -133,7 +138,7 @@ app.controller('myCtrl', function($scope) {
       $scope.$apply()
     }, 5000)
 
-    // $scope.myAudioDelay.mix = 0
+    // $scope.myFlange.mix = 0
     // now do the audio bit
     $scope.sound = AllPizzSounds[$scope.selected % allFileNames.length]
     $scope.sound.play()
