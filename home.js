@@ -1,10 +1,10 @@
 const COLOR_PRIMARY = "#4C3FAF"
 // const COLOR_SECOND = "#4CAF50"
 //button messages//
-const PLAY_MSSG = "START"
+const PLAY_MSSG = "START AUDIO"
 const AGAIN_MSSG = "GOING"
 const PRESSED_MSSG = "START"
-const ASK_MSSG = "ASK (press again)"
+const ASK_MSSG = "ASK (press)"
 var myTimeoutKeeper;
 
 //resizing orientation values from the device//
