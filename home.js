@@ -28,12 +28,12 @@ var group = new Pizzicato.Group();
 
 allFileNames.forEach(element => {
   console.log(element)
-  // var i = new Audio('./res/' + element + '.mp3');
+  // var i = new Audio('./audio/' + element + '.mp3');
 
   sound = new Pizzicato.Sound({
     source: 'file',
     options: {
-      path: './res/' + element + '.mp3',
+      path: './audio/' + element + '.mp3',
       loop: false,
       release: 3,
       volume: 0.2,
