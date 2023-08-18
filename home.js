@@ -3,7 +3,6 @@ const COLOR_PRIMARY = "#4C3FAF"
 const PLAY_MSSG = "START"
 const AGAIN_MSSG = "GOING"
 const PRESSED_MSSG = "START"
-const ASK_MSSG = "ASK"
 var myTimeoutKeeper;
 
 function scale(input) {
@@ -20,21 +19,8 @@ function scale(input) {
 }
 
 var allFileNames = [
-  'guitar1',
-  'soperc',
-  'guitar2',
-  'soph1',
   'kitchen',
-  'ukulele',
-  'soph2',
-  'rev1',
-  'noise',
-  'rev2',
-  'paper',
   'drones',
-  'harmonica',
-  'thin',
-  'cello'
 ]
 
 var AllPizzSounds = []
@@ -75,7 +61,7 @@ app.controller('myCtrl', function($scope) {
   $scope.betaDisplay = 0;
   $scope.gammaDisplay = 0;
   $scope.bgcolor = COLOR_PRIMARY;
-  $scope.buttonMessage = ASK_MSSG
+  $scope.buttonMessage = PLAY_MSSG
   $scope.playing = false
 
   group.addEffect(myAudioDelay)
