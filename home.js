@@ -53,7 +53,7 @@ var app = angular.module('myApp', []);
 
 //effects//
 var myFlange = new Pizzicato.Effects.Flanger({
-	time: 5.0,
+	time: 2.0,
 	feedback: 0.1,
 	mix: 0.5
 });
@@ -93,8 +93,8 @@ app.controller('myCtrl', function($scope) {
       $scope.beta = scale(beta).toFixed(2);
       $scope.gamma = scale(gamma).toFixed(2);
       myFlange.speed = (scale(alpha) * 10.0);
-      myFlange.depth = (scale(beta) * 0.5);
-	  myLPF.frequency = (scale(gamma) * 8000) + 1000;
+      myFlange.depth = (scale(gamma) * 0.5);
+	  myLPF.frequency = (scale(beta) * 8000) + 1000;
       console.log(myFlange.speed);
 	  console.log(myFlange.depth);
 	  console.log(myLPF.frequency);
