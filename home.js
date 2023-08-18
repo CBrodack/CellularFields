@@ -62,7 +62,7 @@ var myLPF = new Pizzicato.Effects.LowPassFilter({
 });
 
 app.controller('myCtrl', function($scope) {
-  $scope.selected = 0
+  $scope.selected = (Math.floor(Math.random() * 3))
   $scope.alpha = 0;
   $scope.beta = 0;
   $scope.gamma = 0;
@@ -140,10 +140,9 @@ app.controller('myCtrl', function($scope) {
       $scope.$apply()
     }, 5000)
 
-    // $scope.myFlange.mix = 0
-    // now do the audio bit
+    //start audio//
     $scope.sound = AllPizzSounds[$scope.selected % allFileNames.length]
-    $scope.sound.play().one
+    $scope.sound.play()
     $scope.playing = true;
     $scope.bgcolor = COLOR_PRIMARY;
   }
