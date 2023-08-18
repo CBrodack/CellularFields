@@ -1,4 +1,5 @@
 const COLOR_PRIMARY = "#4C3FAF"
+const COLOR_DISABLED = "#808080"
 // const COLOR_SECOND = "#4CAF50"
 //button messages//
 const PLAY_MSSG = "START"
@@ -77,7 +78,7 @@ app.controller('myCtrl', function($scope) {
   group.addEffect(myLPF)
 
   $scope.stopMusic = function() {
-    console.log("yeee?")
+    console.log("yeee?");
     window.location.reload();
   }
 
@@ -135,6 +136,8 @@ app.controller('myCtrl', function($scope) {
     }
     isFirstTime = false
     $scope.buttonMessage = PRESSED_MSSG;
+    document.getElementById("startButton").style.backgroundColor = COLOR_DISABLED;
+    document.getElementById("startButton").disabled = true;
     myTimeoutKeeper = setTimeout(() => {
       $scope.buttonMessage = PLAYING_MSSG;
       $scope.$apply()
