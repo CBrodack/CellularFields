@@ -3,6 +3,7 @@ const COLOR_PRIMARY = "#4C3FAF"
 const PLAY_MSSG = "START"
 const AGAIN_MSSG = "GOING"
 const PRESSED_MSSG = "START"
+const ASK_MSSG = "ASK"
 var myTimeoutKeeper;
 
 function scale(input) {
@@ -61,7 +62,7 @@ app.controller('myCtrl', function($scope) {
   $scope.betaDisplay = 0;
   $scope.gammaDisplay = 0;
   $scope.bgcolor = COLOR_PRIMARY;
-  $scope.buttonMessage = PLAY_MSSG
+  $scope.buttonMessage = ASK_MSSG
   $scope.playing = false
 
   group.addEffect(myAudioDelay)
