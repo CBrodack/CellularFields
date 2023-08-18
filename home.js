@@ -25,6 +25,7 @@ function scale(input) {
 var allFileNames = [
   'kitchen',
   'drones',
+  'guitar2',
 ]
 
 var AllPizzSounds = []
