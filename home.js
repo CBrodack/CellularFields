@@ -2,8 +2,8 @@ const COLOR_PRIMARY = "#4C3FAF"
 // const COLOR_SECOND = "#4CAF50"
 //button messages//
 const PLAY_MSSG = "START"
-const AGAIN_MSSG = "AGAIN"
-const PRESSED_MSSG = "loading"
+const PLAYING_MSSG = "PLAYING"
+const PRESSED_MSSG = "STARTING"
 const ASK_MSSG = "GET READY"
 var myTimeoutKeeper;
 
@@ -136,7 +136,7 @@ app.controller('myCtrl', function($scope) {
     isFirstTime = false
     $scope.buttonMessage = PRESSED_MSSG;
     myTimeoutKeeper = setTimeout(() => {
-      $scope.buttonMessage = PLAY_MSSG;
+      $scope.buttonMessage = PLAYING_MSSG;
       $scope.$apply()
     }, 5000)
 
