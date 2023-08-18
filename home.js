@@ -1,11 +1,13 @@
 const COLOR_PRIMARY = "#4C3FAF"
 // const COLOR_SECOND = "#4CAF50"
+//button messages//
 const PLAY_MSSG = "START"
 const AGAIN_MSSG = "GOING"
 const PRESSED_MSSG = "START"
-const ASK_MSSG = "ASK"
+const ASK_MSSG = "ASK (press again)"
 var myTimeoutKeeper;
 
+//resizing orientation values from the device//
 function scale(input) {
   if (input < 0) {
     input = -input
@@ -19,6 +21,7 @@ function scale(input) {
   return input / 90
 }
 
+//audio file names//
 var allFileNames = [
   'kitchen',
   'drones',
