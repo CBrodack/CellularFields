@@ -143,7 +143,7 @@ app.controller('myCtrl', function($scope) {
     // $scope.myFlange.mix = 0
     // now do the audio bit
     $scope.sound = AllPizzSounds[$scope.selected % allFileNames.length]
-    $scope.sound.play()
+    $scope.sound.play().one
     $scope.playing = true;
     $scope.bgcolor = COLOR_PRIMARY;
   }
