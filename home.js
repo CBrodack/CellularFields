@@ -1,10 +1,10 @@
 const COLOR_PRIMARY = "#4C3FAF"
 // const COLOR_SECOND = "#4CAF50"
 //button messages//
-const PLAY_MSSG = "START AUDIO"
-const AGAIN_MSSG = "GOING"
-const PRESSED_MSSG = "START"
-const ASK_MSSG = "ASK (press)"
+const PLAY_MSSG = "START"
+const AGAIN_MSSG = "AGAIN"
+const PRESSED_MSSG = "loading"
+const ASK_MSSG = "GET READY"
 var myTimeoutKeeper;
 
 //resizing orientation values from the device//
@@ -91,8 +91,9 @@ app.controller('myCtrl', function($scope) {
       $scope.alpha = scale(alpha).toFixed(2);
       $scope.beta = scale(beta).toFixed(2);
       $scope.gamma = scale(gamma).toFixed(2);
-      myFlange.speed = (scale(alpha) * 1.0);
-      myFlange.depth = (scale(beta) * 1.0);
+      myFlange.speed = (scale(alpha) * 10.0);
+      myFlange.depth = (scale(beta) * 0.5);
+	  myLPF.frequency = (scale(gamma) * 8000) + 1000;
       console.log(myFlange.speed);
 	  console.log(myFlange.depth);
 	  console.log(myLPF.frequency);
