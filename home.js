@@ -62,7 +62,7 @@ var myLPF = new Pizzicato.Effects.LowPassFilter({
 });
 
 app.controller('myCtrl', function($scope) {
-  $scope.selected = 0 //(Math.floor(Math.random() * 3))//
+  $scope.selected = 0; //(Math.floor(Math.random() * 3))//
   $scope.alpha = 0;
   $scope.beta = 0;
   $scope.gamma = 0;
