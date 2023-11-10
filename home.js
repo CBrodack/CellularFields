@@ -62,7 +62,7 @@ var myLPF = new Pizzicato.Effects.LowPassFilter({
 });
 
 app.controller('myCtrl', function($scope) {
-  $scope.selected = 0; //(Math.floor(Math.random() * 3))//
+  $scope.selected = (Math.floor(Math.random() * 3))
   $scope.alpha = 0;
   $scope.beta = 0;
   $scope.gamma = 0;
@@ -73,7 +73,7 @@ app.controller('myCtrl', function($scope) {
   $scope.buttonMessage = ASK_MSSG
   $scope.playing = false
 
-  group.addEffect(myFlange)
+  group.addEffect(myDelay)
   group.addEffect(myLPF)
 
   $scope.stopMusic = function() {
@@ -93,7 +93,7 @@ app.controller('myCtrl', function($scope) {
       $scope.beta = scale(beta).toFixed(2);
       $scope.gamma = scale(gamma).toFixed(2);
       myDelay.time = (scale(beta) * 0.05);
-      myDelay.feedback = 0.1; //(scale(gamma) * 0.5)//
+      myDelay.feedback = (scale(gamma) * 0.01)
 	  myLPF.frequency = (scale(alpha) * 8000) + 1000;
       console.log(myDelay.time);
 	  console.log(myDelay.feedback);
