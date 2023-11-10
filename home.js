@@ -1,8 +1,7 @@
 const COLOR_PRIMARY = "#4C3FAF"
-const COLOR_DISABLED = "#808080"
 // const COLOR_SECOND = "#4CAF50"
 //button messages//
-const PLAY_MSSG = "START"
+const PLAY_MSSG = "Cue 1"
 const PLAYING_MSSG = "PLAYING"
 const PRESSED_MSSG = "STARTING"
 const ASK_MSSG = "GET READY"
@@ -24,9 +23,9 @@ function scale(input) {
 
 //audio file names//
 var allFileNames = [
-  'kitchen',
-  'drones',
-  'guitar2',
+  'BegottenMemoirCue1',
+  'BegottenMemoirCue2',
+  'BegottenMemoirCue3',
 ]
 
 var AllPizzSounds = []
@@ -53,7 +52,7 @@ allFileNames.forEach(element => {
 var app = angular.module('myApp', []);
 
 //effects//
-var myFlange = new Pizzicato.Effects.Flanger({
+var myDelay = new Pizzicato.Effects.Delay({
 	time: 2.0,
 	feedback: 0.1,
 	mix: 0.5
@@ -63,7 +62,7 @@ var myLPF = new Pizzicato.Effects.LowPassFilter({
 });
 
 app.controller('myCtrl', function($scope) {
-  $scope.selected = (Math.floor(Math.random() * 3))
+  $scope.selected = 1 //(Math.floor(Math.random() * 3))//
   $scope.alpha = 0;
   $scope.beta = 0;
   $scope.gamma = 0;
@@ -78,7 +77,7 @@ app.controller('myCtrl', function($scope) {
   group.addEffect(myLPF)
 
   $scope.stopMusic = function() {
-    console.log("yeee?");
+    console.log("yeee?")
     window.location.reload();
   }
 
@@ -93,9 +92,9 @@ app.controller('myCtrl', function($scope) {
       $scope.alpha = scale(alpha).toFixed(2);
       $scope.beta = scale(beta).toFixed(2);
       $scope.gamma = scale(gamma).toFixed(2);
-      myFlange.speed = (scale(alpha) * 10.0);
-      myFlange.depth = (scale(gamma) * 0.5);
-	  myLPF.frequency = (scale(beta) * 8000) + 1000;
+      myDelay.time = (scale(beta) * 0.05);
+      //myDelay.depth = (scale(gamma) * 0.5);//
+	  myLPF.frequency = (scale(alpha) * 8000) + 1000;
       console.log(myFlange.speed);
 	  console.log(myFlange.depth);
 	  console.log(myLPF.frequency);
@@ -136,8 +135,6 @@ app.controller('myCtrl', function($scope) {
     }
     isFirstTime = false
     $scope.buttonMessage = PRESSED_MSSG;
-    document.getElementById("startButton").style.backgroundColor = COLOR_DISABLED;
-    document.getElementById("startButton").disabled = true;
     myTimeoutKeeper = setTimeout(() => {
       $scope.buttonMessage = PLAYING_MSSG;
       $scope.$apply()
