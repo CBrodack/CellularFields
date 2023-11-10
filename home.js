@@ -93,10 +93,10 @@ app.controller('myCtrl', function($scope) {
       $scope.beta = scale(beta).toFixed(2);
       $scope.gamma = scale(gamma).toFixed(2);
       myDelay.time = (scale(beta) * 0.05);
-      //myDelay.depth = (scale(gamma) * 0.5);//
+      myDelay.feedback = 0.1; //(scale(gamma) * 0.5)//
 	  myLPF.frequency = (scale(alpha) * 8000) + 1000;
-      console.log(myFlange.speed);
-	  console.log(myFlange.depth);
+      console.log(myDelay.time);
+	  console.log(myDelay.feedback);
 	  console.log(myLPF.frequency);
       $scope.alphaDisplay = (scale(alpha) * 100).toFixed(0);
       $scope.betaDisplay = (scale(beta) * 100).toFixed(0);
