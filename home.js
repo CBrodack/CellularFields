@@ -1,7 +1,7 @@
 const COLOR_PRIMARY = "#4C3FAF"
 // const COLOR_SECOND = "#4CAF50"
 //button messages//
-const PLAY_MSSG = "Cue 1"
+const PLAY_MSSG = "CUE_1"
 const PLAYING_MSSG = "PLAYING"
 const PRESSED_MSSG = "STARTING"
 const ASK_MSSG = "GET READY"
