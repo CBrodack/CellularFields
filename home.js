@@ -26,18 +26,51 @@ function scale(input) {
 
 //all audio file names and buffers - BegottenMemoirCue#.mp3//
 
-var Cue1 = new Pizzicato.Sound('./audio/BegottenMemoirCue1.mp3');
-var Cue2 = new Pizzicato.Sound('./audio/BegottenMemoirCue2.mp3');
-var Cue3 = new Pizzicato.Sound('./audio/BegottenMemoirCue2.mp3');
-var Cue4 = new Pizzicato.Sound('./audio/BegottenMemoirCue2.mp3');
-Cue1.volume = 0.7;
-Cue2.volume = 0.7;
-Cue3.volume = 0.7;
-Cue4.volume = 0.7;
-var group1 = new Pizzicato.Group([Cue1]);
-var group2 = new Pizzicato.Group([Cue2]);
-var group3 = new Pizzicato.Group([Cue3]);
-var group4 = new Pizzicato.Group([Cue4]);
+var group1 = new Pizzicato.Group();
+var group2 = new Pizzicato.Group();
+var group3 = new Pizzicato.Group();
+var group4 = new Pizzicato.Group();
+
+	Cue1 = new Pizzicato.Sound({
+		source: 'file',
+		options: {
+			path: './audio/BegottenMemoirCue1.mp3',
+			loop: false,
+			release: 3,
+			volume: 0.7,
+		}
+	})
+	Cue2 = new Pizzicato.Sound({
+		source: 'file',
+		options: {
+			path: './audio/BegottenMemoirCue2.mp3',
+			loop: false,
+			release: 3,
+			volume: 0.7,
+		}
+	})
+	Cue3 = new Pizzicato.Sound({
+		source: 'file',
+		options: {
+			path: './audio/BegottenMemoirCue3.mp3',
+			loop: false,
+			release: 3,
+			volume: 0.7,
+		}
+	})
+	Cue4 = new Pizzicato.Sound({
+		source: 'file',
+		options: {
+			path: './audio/BegottenMemoirCue4.mp3',
+			loop: false,
+			release: 3,
+			volume: 0.7,
+		}
+	})
+	group1.addSound(Cue1)
+	group2.addSound(Cue2)
+	group3.addSound(Cue3)
+	group4.addSound(Cue4);
 
 
 var app = angular.module('myApp', []);
@@ -61,7 +94,7 @@ var Flanger = new Pizzicato.Effects.Flanger({
 
 
 app.controller('myCtrl', function($scope) {
-  $scope.selected 0;
+  $scope.selected = 0;
   $scope.alpha = 0;
   $scope.beta = 0;
   $scope.gamma = 0;
@@ -73,12 +106,12 @@ app.controller('myCtrl', function($scope) {
   $scope.buttonMessage2 = PLAY_MSSG2;
   $scope.buttonMessage3 = PLAY_MSSG3;
   $scope.buttonMessage4 = PLAY_MSSG4;
-  $scope.playing = false;
+  $scope.playing = false
 
-  group1.addEffect(Flanger);
-  group1.addEffect(LPF);
-  group2.addEffect(Del);
-  group2.addEffect(LPF);
+  group1.addEffect(Flanger)
+  group1.addEffect(LPF)
+  group2.addEffect(Del)
+  group2.addEffect(LPF)
 
 
   $scope.stopMusic = function() {
@@ -109,7 +142,7 @@ app.controller('myCtrl', function($scope) {
       $scope.betaDisplay = (scale(beta) * 90).toFixed(0);
       $scope.gammaDisplay = (scale(gamma) * 90).toFixed(0);
     })
-  }
+  };
 
   var isVeryFirstTime = true
   var isFirstTime = true
@@ -135,8 +168,8 @@ app.controller('myCtrl', function($scope) {
 
     if (!isFirstTime) {
       $scope.selected = 0;
-      $scope.group1.stop();
-      $scope.buttonMessage1 = PLAY_MSSG1;
+      $scope.Cue1.stop();
+      $scope.buttonMessage1 = PLAY_MSSG1
       $scope.playing = false;
       $scope.bgcolor = COLOR_PRIMARY;
     }
@@ -152,13 +185,13 @@ app.controller('myCtrl', function($scope) {
     $scope.group1.play()
     $scope.playing = true;
     $scope.bgcolor = COLOR_PRIMARY;
-  };
+  }
 
   $scope.Button2 = function() {
     if (!isFirstTime) {
       $scope.selected = 0;
-      $scope.group2.stop();
-      $scope.buttonMessage2 = PLAY_MSSG2;
+      $scope.Cue2.stop();
+      $scope.buttonMessage2 = PLAY_MSSG2
       $scope.playing = false;
       $scope.bgcolor = COLOR_PRIMARY;
     }
