@@ -173,19 +173,19 @@ app.controller('myCtrl', function($scope) {
     if (!isFirstTime) {
       $scope.selected += 2
       $scope.sound2.stop();
-      $scope.buttonMessage1 = PLAY_MSSG2
+      $scope.buttonMessage2 = PLAY_MSSG2
       $scope.playing = false;
       $scope.bgcolor = COLOR_PRIMARY;
     }
     isFirstTime = false
-    $scope.buttonMessage1 = PRESSED_MSSG;
+    $scope.buttonMessage2 = PRESSED_MSSG;
     myTimeoutKeeper = setTimeout(() => {
-      $scope.buttonMessage1 = PLAYING_MSSG;
+      $scope.buttonMessage2 = PLAYING_MSSG;
       $scope.$apply()
     }, 5000)
 
     //start audio//
-    $scope.sound2 = Buffer1[$scope.selected % allFileNames.length]
+    $scope.sound2 = Buffer2[$scope.selected % allFileNames.length]
     $scope.sound2.play()
     $scope.playing = true;
     $scope.bgcolor = COLOR_PRIMARY;
