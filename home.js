@@ -32,6 +32,10 @@ var allFileNames = [
   'BegottenMemoirCue4'
 ]
 
+var Buffer1 = []
+var Buffer2 = []
+var Buffer3 = []
+var Buffer4 = []
 var AllPizzSounds = []
 var group = new Pizzicato.Group();
 
@@ -39,17 +43,17 @@ allFileNames.forEach(element => {
   console.log(element)
   // var i = new Audio('./audio/' + element + '.mp3');
 
-  sound = new Pizzicato.Sound({
+  sound1 = new Pizzicato.Sound({
     source: 'file',
     options: {
       path: './audio/' + element + '.mp3',
       loop: false,
       release: 3,
-      volume: 0.2,
+      volume: 1.0,
     }
   })
-  group.addSound(sound)
-  AllPizzSounds.push(sound)
+  group.addSound(sound1)
+  Buffer1.push(sound1)
 });
 
 
@@ -114,9 +118,9 @@ app.controller('myCtrl', function($scope) {
       console.log(Del.time);
 	  console.log(Del.feedback);
 	  console.log(LPF.frequency);
-      $scope.alphaDisplay = (scale(alpha) * 100).toFixed(0);
-      $scope.betaDisplay = (scale(beta) * 100).toFixed(0);
-      $scope.gammaDisplay = (scale(gamma) * 100).toFixed(0);
+      $scope.alphaDisplay = (scale(alpha) * 90).toFixed(0);
+      $scope.betaDisplay = (scale(beta) * 90).toFixed(0);
+      $scope.gammaDisplay = (scale(gamma) * 90).toFixed(0);
     })
   }
 
@@ -144,7 +148,7 @@ app.controller('myCtrl', function($scope) {
 
     if (!isFirstTime) {
       $scope.selected += 1
-      $scope.sound.stop();
+      $scope.sound1.stop();
       $scope.buttonMessage1 = PLAY_MSSG1
       $scope.playing = false;
       $scope.bgcolor = COLOR_PRIMARY;
@@ -159,8 +163,8 @@ app.controller('myCtrl', function($scope) {
     }, 5000)
 
     //start audio//
-    $scope.sound = AllPizzSounds[$scope.selected % allFileNames.length]
-    $scope.sound.play()
+    $scope.sound1 = Buffer1[$scope.selected % allFileNames.length]
+    $scope.sound1.play()
     $scope.playing = true;
     $scope.bgcolor = COLOR_PRIMARY;
   }
@@ -168,7 +172,7 @@ app.controller('myCtrl', function($scope) {
   $scope.Button2 = function() {
     if (!isFirstTime) {
       $scope.selected += 1
-      $scope.sound.stop();
+      $scope.sound2.stop();
       $scope.buttonMessage1 = PLAY_MSSG2
       $scope.playing = false;
       $scope.bgcolor = COLOR_PRIMARY;
@@ -181,8 +185,8 @@ app.controller('myCtrl', function($scope) {
     }, 5000)
 
     //start audio//
-    $scope.sound = AllPizzSounds[$scope.selected % allFileNames.length]
-    $scope.sound.play()
+    $scope.sound2 = Buffer1[$scope.selected % allFileNames.length]
+    $scope.sound2.play()
     $scope.playing = true;
     $scope.bgcolor = COLOR_PRIMARY;
   }
