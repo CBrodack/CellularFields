@@ -109,7 +109,7 @@ app.controller('myCtrl', function($scope) {
       $scope.betaDisplay = (scale(beta) * 90).toFixed(0);
       $scope.gammaDisplay = (scale(gamma) * 90).toFixed(0);
     })
-  };
+  }
 
   var isVeryFirstTime = true
   var isFirstTime = true
