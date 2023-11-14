@@ -1,7 +1,10 @@
 const COLOR_PRIMARY = "#4C3FAF"
 // const COLOR_SECOND = "#4CAF50"
 //button messages//
-const PLAY_MSSG = "CUE_1"
+const PLAY_MSSG1 = "CUE 1"
+const PLAY_MSSG2 = "CUE 2"
+const PLAY_MSSG3 = "CUE 3"
+const PLAY_MSSG4 = "CUE 4"
 const PLAYING_MSSG = "PLAYING"
 const PRESSED_MSSG = "STARTING"
 const ASK_MSSG = "GET READY"
@@ -62,7 +65,7 @@ var myLPF = new Pizzicato.Effects.LowPassFilter({
 });
 
 app.controller('myCtrl', function($scope) {
-  $scope.selected = (Math.floor(Math.random() * 3))
+  $scope.selected = 0;
   $scope.alpha = 0;
   $scope.beta = 0;
   $scope.gamma = 0;
@@ -70,7 +73,7 @@ app.controller('myCtrl', function($scope) {
   $scope.betaDisplay = 0;
   $scope.gammaDisplay = 0;
   $scope.bgcolor = COLOR_PRIMARY;
-  $scope.buttonMessage = ASK_MSSG
+  $scope.buttonMessage1 = ASK_MSSG
   $scope.playing = false
 
   group.addEffect(myDelay)
@@ -106,7 +109,7 @@ app.controller('myCtrl', function($scope) {
 
   var isVeryFirstTime = true
   var isFirstTime = true
-  $scope.onClickMe = function() {
+  $scope.onClickMe1 = function() {
     if (isVeryFirstTime) {
       if (typeof DeviceMotionEvent.requestPermission === 'function') {
         DeviceMotionEvent.requestPermission()
@@ -121,7 +124,7 @@ app.controller('myCtrl', function($scope) {
         window.addEventListener("deviceorientation", $scope.updateXY, true);
       }
       isVeryFirstTime = false
-      $scope.buttonMessage = PLAY_MSSG
+      $scope.buttonMessage1 = PLAY_MSSG1
       return
     }
     clearTimeout(myTimeoutKeeper)
@@ -129,14 +132,14 @@ app.controller('myCtrl', function($scope) {
     if (!isFirstTime) {
       $scope.selected += 1
       $scope.sound.stop();
-      $scope.buttonMessage = PLAY_MSSG
+      $scope.buttonMessage1 = PLAY_MSSG1
       $scope.playing = false;
       $scope.bgcolor = COLOR_PRIMARY;
     }
     isFirstTime = false
-    $scope.buttonMessage = PRESSED_MSSG;
+    $scope.buttonMessage1 = PRESSED_MSSG;
     myTimeoutKeeper = setTimeout(() => {
-      $scope.buttonMessage = PLAYING_MSSG;
+      $scope.buttonMessage1 = PLAYING_MSSG;
       $scope.$apply()
     }, 5000)
 
