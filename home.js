@@ -61,7 +61,7 @@ var Flanger = new Pizzicato.Effects.Flanger({
 
 
 app.controller('myCtrl', function($scope) {
-  $scope.selected += 1;
+  $scope.selected 0;
   $scope.alpha = 0;
   $scope.beta = 0;
   $scope.gamma = 0;
@@ -134,9 +134,9 @@ app.controller('myCtrl', function($scope) {
     clearTimeout(myTimeoutKeeper)
 
     if (!isFirstTime) {
-      $scope.selected += 1
+      $scope.selected = 0;
       $scope.group1.stop();
-      $scope.buttonMessage1 = PLAY_MSSG1
+      $scope.buttonMessage1 = PLAY_MSSG1;
       $scope.playing = false;
       $scope.bgcolor = COLOR_PRIMARY;
     }
@@ -152,13 +152,13 @@ app.controller('myCtrl', function($scope) {
     $scope.group1.play()
     $scope.playing = true;
     $scope.bgcolor = COLOR_PRIMARY;
-  }
+  };
 
   $scope.Button2 = function() {
     if (!isFirstTime) {
-      $scope.selected += 1
+      $scope.selected = 0;
       $scope.group2.stop();
-      $scope.buttonMessage2 = PLAY_MSSG2
+      $scope.buttonMessage2 = PLAY_MSSG2;
       $scope.playing = false;
       $scope.bgcolor = COLOR_PRIMARY;
     }
