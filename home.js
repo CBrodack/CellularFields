@@ -1,10 +1,10 @@
 const COLOR_PRIMARY = "#4C3FAF"
 const COLOR_DISABLED = "#808080"
 //button messages//
-const PLAY_MSSG1 = "CUE 1"
-const PLAY_MSSG2 = "CUE 2"
-const PLAY_MSSG3 = "CUE 3"
-const PLAY_MSSG4 = "CUE 4"
+const PLAY_MSSG1 = "CUE-1"
+const PLAY_MSSG2 = "CUE-2"
+const PLAY_MSSG3 = "CUE-3"
+const PLAY_MSSG4 = "CUE-4"
 const PLAYING_MSSG = "PLAYING"
 const PRESSED_MSSG = "STARTING"
 const ASK_MSSG = "GET READY"
@@ -148,8 +148,8 @@ app.controller('myCtrl', function($scope) {
     }
     isFirstTime = false
     $scope.buttonMessage1 = PRESSED_MSSG;
-	document.getElementById("Button1").style.backgroundColor = COLOR_DISABLED;
-	document.getElementById("Button1").disabled = true;
+	document.getElementById("CUE_1").style.backgroundColor = COLOR_DISABLED;
+	document.getElementById("CUE_1").disabled = true;
     myTimeoutKeeper = setTimeout(() => {
       $scope.buttonMessage1 = PLAYING_MSSG;
       $scope.$apply()
