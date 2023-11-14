@@ -37,7 +37,8 @@ var Buffer2 = []
 var Buffer3 = []
 var Buffer4 = []
 var AllPizzSounds = []
-var group = new Pizzicato.Group();
+var group1 = new Pizzicato.Group()
+var group2 = new Pizzicato.Group();
 
 allFileNames.forEach(element => {
   console.log(element)
@@ -52,7 +53,7 @@ allFileNames.forEach(element => {
       volume: 1.0,
     }
   })
-  group.addSound(sound1)
+  group1.addSound(sound1)
   Buffer1.push(sound1)
   
   sound2 = new Pizzicato.Sound({
@@ -64,7 +65,7 @@ allFileNames.forEach(element => {
       volume: 1.0,
     }
   })
-  group.addSound(sound2)
+  group2.addSound(sound2)
   Buffer2.push(sound2)
 });
 
@@ -104,9 +105,11 @@ app.controller('myCtrl', function($scope) {
   $scope.buttonMessage4 = PLAY_MSSG4;
   $scope.playing = false
 
-  group.addEffect(Del)
-  group.addEffect(LPF)
-  group.addEffect(Flanger)
+  group1.addEffect(Flanger)
+  group1.addEffect(LPF)
+  group2.addEffect(Del)
+  group2.addEffect(LPF)
+
 
   $scope.stopMusic = function() {
     console.log("stop music");
@@ -124,9 +127,10 @@ app.controller('myCtrl', function($scope) {
       $scope.alpha = scale(alpha).toFixed(2);
       $scope.beta = scale(beta).toFixed(2);
       $scope.gamma = scale(gamma).toFixed(2);
-      Del.time = (scale(beta) * 0.05);
-      Del.feedback = (scale(gamma) * 0.01)
-	  LPF.frequency = (scale(alpha) * 8000) + 1000;
+      Del.time = (scale(beta) * 2.0);
+      Del.feedback = (scale(gamma) * 0.5);
+	  Flanger.time = (scale(beta) * 10.0);
+	  LPF.frequency = (scale(alpha) * -10000) + 18000;
       console.log(Del.time);
 	  console.log(Del.feedback);
 	  console.log(LPF.frequency);
@@ -159,7 +163,7 @@ app.controller('myCtrl', function($scope) {
     clearTimeout(myTimeoutKeeper)
 
     if (!isFirstTime) {
-      $scope.selected += 1
+      $scope.selected = 2
       $scope.sound1.stop();
       $scope.buttonMessage1 = PLAY_MSSG1
       $scope.playing = false;
