@@ -26,13 +26,17 @@ function scale(input) {
 
 //all audio file names and buffers - BegottenMemoirCue#.mp3//
 
-var Cue1 = new Pizzicato.Sound('./audio/BegottenMemoirCue1.mp3')
-var Cue2 = new Pizzicato.Sound('./audio/BegottenMemoirCue2.mp3')
-var Cue3 = new Pizzicato.Sound('./audio/BegottenMemoirCue2.mp3')
-var Cue4 = new Pizzicato.Sound('./audio/BegottenMemoirCue2.mp3')
-var group1 = new Pizzicato.Group([Cue1])
-var group2 = new Pizzicato.Group([Cue2])
-var group3 = new Pizzicato.Group([Cue3])
+var Cue1 = new Pizzicato.Sound('./audio/BegottenMemoirCue1.mp3');
+var Cue2 = new Pizzicato.Sound('./audio/BegottenMemoirCue2.mp3');
+var Cue3 = new Pizzicato.Sound('./audio/BegottenMemoirCue2.mp3');
+var Cue4 = new Pizzicato.Sound('./audio/BegottenMemoirCue2.mp3');
+Cue1.volume = 0.7;
+Cue2.volume = 0.7;
+Cue3.volume = 0.7;
+Cue4.volume = 0.7;
+var group1 = new Pizzicato.Group([Cue1]);
+var group2 = new Pizzicato.Group([Cue2]);
+var group3 = new Pizzicato.Group([Cue3]);
 var group4 = new Pizzicato.Group([Cue4]);
 
 
