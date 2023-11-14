@@ -127,11 +127,12 @@ app.controller('myCtrl', function($scope) {
       $scope.alpha = scale(alpha).toFixed(2);
       $scope.beta = scale(beta).toFixed(2);
       $scope.gamma = scale(gamma).toFixed(2);
-      Del.time = (scale(beta) * 0.05);
+      Del.time = (scale(beta) * 0.2);
       Del.feedback = (scale(gamma) * 0.5);
 	  Flanger.time = (scale(beta) * 10.0);
-	  LPF.frequency = (scale(alpha) * 8000) + 2000;
-      console.log(Del.time);
+	  LPF.frequency = (scale(alpha) * -8000) + 10000;
+      console.log(Flanger.time);
+	  console.log(Del.time);
 	  console.log(Del.feedback);
 	  console.log(LPF.frequency);
       $scope.alphaDisplay = (scale(alpha) * 90).toFixed(0);
@@ -163,7 +164,7 @@ app.controller('myCtrl', function($scope) {
     clearTimeout(myTimeoutKeeper)
 
     if (!isFirstTime) {
-      $scope.selected = 2
+      $scope.selected = 1
       $scope.sound1.stop();
       $scope.buttonMessage1 = PLAY_MSSG1
       $scope.playing = false;
@@ -187,7 +188,7 @@ app.controller('myCtrl', function($scope) {
 
   $scope.Button2 = function() {
     if (!isFirstTime) {
-      $scope.selected += 2
+      $scope.selected = 2
       $scope.sound2.stop();
       $scope.buttonMessage2 = PLAY_MSSG2
       $scope.playing = false;
@@ -195,6 +196,8 @@ app.controller('myCtrl', function($scope) {
     }
     isFirstTime = false
     $scope.buttonMessage2 = PRESSED_MSSG;
+	document.getElementById("CUE_2").style.backgroundColor = COLOR_DISABLED;
+	document.getElementById("CUE_2").disabled = true;
     myTimeoutKeeper = setTimeout(() => {
       $scope.buttonMessage2 = PLAYING_MSSG;
       $scope.$apply()
