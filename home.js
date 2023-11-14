@@ -127,7 +127,7 @@ app.controller('myCtrl', function($scope) {
       $scope.alpha = scale(alpha).toFixed(2);
       $scope.beta = scale(beta).toFixed(2);
       $scope.gamma = scale(gamma).toFixed(2);
-      Del.time = (scale(beta) * 2.0);
+      Del.time = (scale(beta) * 0.05);
       Del.feedback = (scale(gamma) * 0.5);
 	  Flanger.time = (scale(beta) * 10.0);
 	  LPF.frequency = (scale(alpha) * -10000) + 18000;
