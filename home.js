@@ -1,5 +1,5 @@
 const COLOR_PRIMARY = "#4C3FAF"
-// const COLOR_SECOND = "#4CAF50"
+const COLOR_DISABLED = "#808080"
 //button messages//
 const PLAY_MSSG1 = "CUE 1"
 const PLAY_MSSG2 = "CUE 2"
@@ -90,7 +90,7 @@ app.controller('myCtrl', function($scope) {
   group.addEffect(Flanger)
 
   $scope.stopMusic = function() {
-    console.log("stop music")
+    console.log("stop music");
     window.location.reload();
   }
 
@@ -119,7 +119,7 @@ app.controller('myCtrl', function($scope) {
 
   var isVeryFirstTime = true
   var isFirstTime = true
-  $scope.onClickMe1 = function() {
+  $scope.Button1 = function() {
     if (isVeryFirstTime) {
       if (typeof DeviceMotionEvent.requestPermission === 'function') {
         DeviceMotionEvent.requestPermission()
@@ -143,6 +143,30 @@ app.controller('myCtrl', function($scope) {
       $scope.selected += 1
       $scope.sound.stop();
       $scope.buttonMessage1 = PLAY_MSSG1
+      $scope.playing = false;
+      $scope.bgcolor = COLOR_PRIMARY;
+    }
+    isFirstTime = false
+    $scope.buttonMessage1 = PRESSED_MSSG;
+	document.getElementById("Button1").style.backgroundColor = COLOR_DISABLED;
+	document.getElementById("Button1").disabled = true;
+    myTimeoutKeeper = setTimeout(() => {
+      $scope.buttonMessage1 = PLAYING_MSSG;
+      $scope.$apply()
+    }, 5000)
+
+    //start audio//
+    $scope.sound = AllPizzSounds[$scope.selected % allFileNames.length]
+    $scope.sound.play()
+    $scope.playing = true;
+    $scope.bgcolor = COLOR_PRIMARY;
+  }
+
+  $scope.Button2 = function() {
+    if (!isFirstTime) {
+      $scope.selected += 1
+      $scope.sound.stop();
+      $scope.buttonMessage1 = PLAY_MSSG2
       $scope.playing = false;
       $scope.bgcolor = COLOR_PRIMARY;
     }
