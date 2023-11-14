@@ -130,7 +130,7 @@ app.controller('myCtrl', function($scope) {
       Del.time = (scale(beta) * 0.05);
       Del.feedback = (scale(gamma) * 0.5);
 	  Flanger.time = (scale(beta) * 10.0);
-	  LPF.frequency = (scale(alpha) * -10000) + 18000;
+	  LPF.frequency = (scale(alpha) * 8000) + 2000;
       console.log(Del.time);
 	  console.log(Del.feedback);
 	  console.log(LPF.frequency);
