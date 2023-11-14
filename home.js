@@ -5,7 +5,7 @@ const PLAY_MSSG1 = "CUE 1"
 const PLAY_MSSG2 = "CUE 2"
 const PLAY_MSSG3 = "CUE 3"
 const PLAY_MSSG4 = "CUE 4"
-const PLAYING_MSSG = "DONE"
+const DONE_MSSG = "DONE"
 const PRESSED_MSSG = "PLAYING"
 const ASK_MSSG = "GET READY"
 var myTimeoutKeeper;
@@ -24,50 +24,16 @@ function scale(input) {
   return input / 90
 }
 
-//audio file names//
-var allFileNames = [
-  'BegottenMemoirCue1',
-  'BegottenMemoirCue2',
-  'BegottenMemoirCue3',
-  'BegottenMemoirCue4'
-]
+//all audio file names and buffers - BegottenMemoirCue#.mp3//
 
-var Buffer1 = []
-var Buffer2 = []
-var Buffer3 = []
-var Buffer4 = []
-var AllPizzSounds = []
-var group1 = new Pizzicato.Group()
-var group2 = new Pizzicato.Group();
-
-allFileNames.forEach(element => {
-  console.log(element)
-  // var i = new Audio('./audio/' + element + '.mp3');
-
-  sound1 = new Pizzicato.Sound({
-    source: 'file',
-    options: {
-      path: './audio/' + element + '.mp3',
-      loop: false,
-      release: 3,
-      volume: 1.0,
-    }
-  })
-  group1.addSound(sound1)
-  Buffer1.push(sound1)
-  
-  sound2 = new Pizzicato.Sound({
-    source: 'file',
-    options: {
-      path: './audio/' + element + '.mp3',
-      loop: false,
-      release: 3,
-      volume: 1.0,
-    }
-  })
-  group2.addSound(sound2)
-  Buffer2.push(sound2)
-});
+var Cue1 = new Pizzicato.Sound('./audio/BegottenMemoirCue1.mp3')
+var Cue2 = new Pizzicato.Sound('./audio/BegottenMemoirCue2.mp3')
+var Cue3 = new Pizzicato.Sound('./audio/BegottenMemoirCue2.mp3')
+var Cue4 = new Pizzicato.Sound('./audio/BegottenMemoirCue2.mp3')
+var group1 = new Pizzicato.Group([Cue1])
+var group2 = new Pizzicato.Group([Cue2])
+var group3 = new Pizzicato.Group([Cue3])
+var group4 = new Pizzicato.Group([Cue4]);
 
 
 var app = angular.module('myApp', []);
@@ -127,7 +93,7 @@ app.controller('myCtrl', function($scope) {
       $scope.alpha = scale(alpha).toFixed(2);
       $scope.beta = scale(beta).toFixed(2);
       $scope.gamma = scale(gamma).toFixed(2);
-      Del.time = (scale(beta) * 0.2);
+      Del.time = (scale(beta) * 10);
       Del.feedback = (scale(gamma) * 0.5);
 	  Flanger.time = (scale(beta) * 10.0);
 	  LPF.frequency = (scale(alpha) * -8000) + 10000;
@@ -139,7 +105,7 @@ app.controller('myCtrl', function($scope) {
       $scope.betaDisplay = (scale(beta) * 90).toFixed(0);
       $scope.gammaDisplay = (scale(gamma) * 90).toFixed(0);
     })
-  }
+  };
 
   var isVeryFirstTime = true
   var isFirstTime = true
@@ -164,48 +130,44 @@ app.controller('myCtrl', function($scope) {
     clearTimeout(myTimeoutKeeper)
 
     if (!isFirstTime) {
-      $scope.selected = 1
-      $scope.sound1.stop();
+      $scope.selected += 1
+      $scope.group1.stop();
       $scope.buttonMessage1 = PLAY_MSSG1
       $scope.playing = false;
       $scope.bgcolor = COLOR_PRIMARY;
     }
-    isFirstTime = false
     $scope.buttonMessage1 = PRESSED_MSSG;
 	document.getElementById("CUE_1").style.backgroundColor = COLOR_DISABLED;
 	document.getElementById("CUE_1").disabled = true;
     myTimeoutKeeper = setTimeout(() => {
-      $scope.buttonMessage1 = PLAYING_MSSG;
+      $scope.buttonMessage1 = DONE_MSSG;
       $scope.$apply()
     }, 5000)
 
     //start audio//
-    $scope.sound1 = Buffer1[$scope.selected % allFileNames.length]
-    $scope.sound1.play()
+    $scope.group1.play()
     $scope.playing = true;
     $scope.bgcolor = COLOR_PRIMARY;
   }
 
   $scope.Button2 = function() {
     if (!isFirstTime) {
-      $scope.selected = 2
-      $scope.sound2.stop();
+      $scope.selected += 1
+      $scope.group2.stop();
       $scope.buttonMessage2 = PLAY_MSSG2
       $scope.playing = false;
       $scope.bgcolor = COLOR_PRIMARY;
     }
-    isFirstTime = false
     $scope.buttonMessage2 = PRESSED_MSSG;
 	document.getElementById("CUE_2").style.backgroundColor = COLOR_DISABLED;
 	document.getElementById("CUE_2").disabled = true;
     myTimeoutKeeper = setTimeout(() => {
-      $scope.buttonMessage2 = PLAYING_MSSG;
+      $scope.buttonMessage2 = DONE_MSSG;
       $scope.$apply()
     }, 5000)
 
     //start audio//
-    $scope.sound2 = Buffer2[$scope.selected % allFileNames.length]
-    $scope.sound2.play()
+    $scope.group2.play()
     $scope.playing = true;
     $scope.bgcolor = COLOR_PRIMARY;
   }
