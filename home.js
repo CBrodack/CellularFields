@@ -82,7 +82,10 @@ app.controller('myCtrl', function($scope) {
   $scope.betaDisplay = 0;
   $scope.gammaDisplay = 0;
   $scope.bgcolor = COLOR_PRIMARY;
-  $scope.buttonMessage1 = ASK_MSSG
+  $scope.buttonMessage1 = ASK_MSSG;
+  $scope.buttonMessage2 = PLAY_MSSG2;
+  $scope.buttonMessage3 = PLAY_MSSG3;
+  $scope.buttonMessage4 = PLAY_MSSG4;
   $scope.playing = false
 
   group.addEffect(Del)
