@@ -171,7 +171,7 @@ app.controller('myCtrl', function($scope) {
 
   $scope.Button2 = function() {
     if (!isFirstTime) {
-      $scope.selected += 1
+      $scope.selected += 2
       $scope.sound2.stop();
       $scope.buttonMessage1 = PLAY_MSSG2
       $scope.playing = false;
