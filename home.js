@@ -29,6 +29,7 @@ var allFileNames = [
   'BegottenMemoirCue1',
   'BegottenMemoirCue2',
   'BegottenMemoirCue3',
+  'BegottenMemoirCue4'
 ]
 
 var AllPizzSounds = []
@@ -55,14 +56,22 @@ allFileNames.forEach(element => {
 var app = angular.module('myApp', []);
 
 //effects//
-var myDelay = new Pizzicato.Effects.Delay({
+var Del = new Pizzicato.Effects.Delay({
 	time: 2.0,
 	feedback: 0.1,
 	mix: 0.5
 });
-var myLPF = new Pizzicato.Effects.LowPassFilter({
+var LPF = new Pizzicato.Effects.LowPassFilter({
   peak: 1
 });
+var Flanger = new Pizzicato.Effects.Flanger({
+	time: 0.45,
+	speed: 0.2,
+	depth: 0.1,
+	feedback: 0.1,
+	mix: 0.2
+});
+
 
 app.controller('myCtrl', function($scope) {
   $scope.selected = 0;
@@ -76,11 +85,12 @@ app.controller('myCtrl', function($scope) {
   $scope.buttonMessage1 = ASK_MSSG
   $scope.playing = false
 
-  group.addEffect(myDelay)
-  group.addEffect(myLPF)
+  group.addEffect(Del)
+  group.addEffect(LPF)
+  group.addEffect(Flanger)
 
   $scope.stopMusic = function() {
-    console.log("yeee?")
+    console.log("stop music")
     window.location.reload();
   }
 
@@ -95,12 +105,12 @@ app.controller('myCtrl', function($scope) {
       $scope.alpha = scale(alpha).toFixed(2);
       $scope.beta = scale(beta).toFixed(2);
       $scope.gamma = scale(gamma).toFixed(2);
-      myDelay.time = (scale(beta) * 0.05);
-      myDelay.feedback = (scale(gamma) * 0.01)
-	  myLPF.frequency = (scale(alpha) * 8000) + 1000;
-      console.log(myDelay.time);
-	  console.log(myDelay.feedback);
-	  console.log(myLPF.frequency);
+      Del.time = (scale(beta) * 0.05);
+      Del.feedback = (scale(gamma) * 0.01)
+	  LPF.frequency = (scale(alpha) * 8000) + 1000;
+      console.log(Del.time);
+	  console.log(Del.feedback);
+	  console.log(LPF.frequency);
       $scope.alphaDisplay = (scale(alpha) * 100).toFixed(0);
       $scope.betaDisplay = (scale(beta) * 100).toFixed(0);
       $scope.gammaDisplay = (scale(gamma) * 100).toFixed(0);
