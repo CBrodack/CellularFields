@@ -1,12 +1,12 @@
 const COLOR_PRIMARY = "#4C3FAF"
 const COLOR_DISABLED = "#808080"
 //button messages//
-const PLAY_MSSG1 = "CUE-1"
-const PLAY_MSSG2 = "CUE-2"
-const PLAY_MSSG3 = "CUE-3"
-const PLAY_MSSG4 = "CUE-4"
-const PLAYING_MSSG = "PLAYING"
-const PRESSED_MSSG = "STARTING"
+const PLAY_MSSG1 = "CUE 1"
+const PLAY_MSSG2 = "CUE 2"
+const PLAY_MSSG3 = "CUE 3"
+const PLAY_MSSG4 = "CUE 4"
+const PLAYING_MSSG = "DONE"
+const PRESSED_MSSG = "PLAYING"
 const ASK_MSSG = "GET READY"
 var myTimeoutKeeper;
 
@@ -54,6 +54,18 @@ allFileNames.forEach(element => {
   })
   group.addSound(sound1)
   Buffer1.push(sound1)
+  
+  sound2 = new Pizzicato.Sound({
+    source: 'file',
+    options: {
+      path: './audio/' + element + '.mp3',
+      loop: false,
+      release: 3,
+      volume: 1.0,
+    }
+  })
+  group.addSound(sound2)
+  Buffer2.push(sound2)
 });
 
 
