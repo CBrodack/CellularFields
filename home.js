@@ -61,7 +61,7 @@ var Flanger = new Pizzicato.Effects.Flanger({
 
 
 app.controller('myCtrl', function($scope) {
-  $scope.selected = 0;
+  $scope.selected += 1;
   $scope.alpha = 0;
   $scope.beta = 0;
   $scope.gamma = 0;
@@ -73,12 +73,12 @@ app.controller('myCtrl', function($scope) {
   $scope.buttonMessage2 = PLAY_MSSG2;
   $scope.buttonMessage3 = PLAY_MSSG3;
   $scope.buttonMessage4 = PLAY_MSSG4;
-  $scope.playing = false
+  $scope.playing = false;
 
-  group1.addEffect(Flanger)
-  group1.addEffect(LPF)
-  group2.addEffect(Del)
-  group2.addEffect(LPF)
+  group1.addEffect(Flanger);
+  group1.addEffect(LPF);
+  group2.addEffect(Del);
+  group2.addEffect(LPF);
 
 
   $scope.stopMusic = function() {
